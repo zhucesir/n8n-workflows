@@ -293,11 +293,11 @@ class WorkflowSearch {
             <div style="margin-bottom: 1.5rem;">
                 <strong>Details:</strong>
                 <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-top: 0.5rem;">
-                    <div><strong>Category:</strong> ${workflow.category}</div>
-                    <div><strong>Trigger:</strong> ${workflow.trigger_type}</div>
+                    <div><strong>分类:</strong> ${workflow.category}</div>
+                    <div><strong>触发器:</strong> ${workflow.trigger_type}</div>
                     <div><strong>Complexity:</strong> ${workflow.complexity}</div>
                     <div><strong>Nodes:</strong> ${workflow.node_count}</div>
-                    <div><strong>Status:</strong> ${workflow.active ? 'Active' : 'Inactive'}</div>
+                    <div><strong>状态:</strong> ${workflow.active ? '活跃' : '非活跃'}</div>
                     <div><strong>File:</strong> ${workflow.filename}</div>
                 </div>
             </div>
@@ -333,23 +333,23 @@ class WorkflowSearch {
     }
 
     updateResultsHeader(query, filters) {
-        let title = 'Search Results';
+        let title = '搜索结果';
         let filterDesc = [];
 
         if (query) {
-            title = `Search: "${query}"`;
+            title = `搜索: "${query}"`;
         }
 
-        if (filters.category) filterDesc.push(`Category: ${filters.category}`);
+        if (filters.category) filterDesc.push(`分类: ${filters.category}`);
         if (filters.complexity) filterDesc.push(`Complexity: ${filters.complexity}`);
-        if (filters.trigger) filterDesc.push(`Trigger: ${filters.trigger}`);
+        if (filters.trigger) filterDesc.push(`触发器: ${filters.trigger}`);
 
         if (filterDesc.length > 0) {
             title += ` (${filterDesc.join(', ')})`;
         }
 
         this.resultsTitle.textContent = title;
-        this.resultsCount.textContent = `${this.currentResults.length} workflows found`;
+        this.resultsCount.textContent = `${this.currentResults.length} 个工作流被找到`;
     }
 
     loadMoreResults() {
@@ -412,7 +412,7 @@ window.copyWorkflowId = function(filename) {
         // Show temporary success message
         const btn = event.target;
         const originalText = btn.textContent;
-        btn.textContent = '✅ Copied!';
+        btn.textContent = '✅ 已复制!';
         setTimeout(() => {
             btn.textContent = originalText;
         }, 2000);
@@ -427,7 +427,7 @@ window.copyWorkflowId = function(filename) {
 
         const btn = event.target;
         const originalText = btn.textContent;
-        btn.textContent = '✅ Copied!';
+        btn.textContent = '✅ 已复制!';
         setTimeout(() => {
             btn.textContent = originalText;
         }, 2000);

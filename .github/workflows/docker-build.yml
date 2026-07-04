@@ -1,0 +1,25 @@
+name: Build and Export Docker Image
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch: # Allows manual trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build and Export Docker Image
+        run: |
+          docker build -t n8n-workflows-zh:latest .
+          docker save n8n-workflows-zh:latest | gzip > n8n-workflows-zh-image.tar.gz
+
+      - name: Upload Image Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: n8n-workflows-zh-image
+          path: n8n-workflows-zh-image.tar.gz
+          retention-days: 7
