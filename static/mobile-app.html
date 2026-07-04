@@ -241,12 +241,12 @@
         </div>
         
         <div class="search-container">
-            <input type="text" class="search-box" placeholder="Search workflows..." id="searchInput">
+            <input type="text" class="search-box" placeholder="搜索工作流..." id="searchInput">
             <div class="filters">
                 <button class="filter-btn active" data-trigger="all">All</button>
                 <button class="filter-btn" data-trigger="Webhook">Webhook</button>
                 <button class="filter-btn" data-trigger="Scheduled">Scheduled</button>
-                <button class="filter-btn" data-trigger="Manual">Manual</button>
+                <button class="filter-btn" data-trigger="Manual">手动</button>
                 <button class="filter-btn" data-trigger="Complex">Complex</button>
             </div>
         </div>
@@ -254,24 +254,24 @@
         <div class="stats-grid" id="statsGrid">
             <div class="stat-card">
                 <div class="stat-number" id="totalWorkflows">-</div>
-                <div class="stat-label">Total Workflows</div>
+                <div class="stat-label">总工作流数</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" id="activeWorkflows">-</div>
-                <div class="stat-label">Active</div>
+                <div class="stat-label">活跃</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" id="integrations">-</div>
-                <div class="stat-label">Integrations</div>
+                <div class="stat-label">集成数量</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" id="nodes">-</div>
-                <div class="stat-label">Total Nodes</div>
+                <div class="stat-label">总节点数</div>
             </div>
         </div>
         
         <div class="workflows-list" id="workflowsList">
-            <div class="loading">Loading workflows...</div>
+            <div class="loading">正在加载工作流...</div>
         </div>
     </div>
     
@@ -325,7 +325,7 @@
             const container = document.getElementById('workflowsList');
             
             if (workflows.length === 0) {
-                container.innerHTML = '<div class="loading">No workflows found</div>';
+                container.innerHTML = '<div class="loading">未找到工作流</div>';
                 return;
             }
             
@@ -337,11 +337,11 @@
                         <span class="meta-tag">${workflow.trigger_type}</span>
                         <span class="meta-tag">${workflow.complexity}</span>
                         <span class="meta-tag">${workflow.node_count} nodes</span>
-                        ${workflow.active ? '<span class="meta-tag" style="background: #d4edda; color: #155724;">Active</span>' : ''}
+                        ${workflow.active ? '<span class="meta-tag" style="background: #d4edda; color: #155724;">活跃</span>' : ''}
                     </div>
                     <div class="workflow-actions">
                         <button class="action-btn btn-primary" onclick="viewWorkflow('${workflow.filename}')">View</button>
-                        <button class="action-btn btn-secondary" onclick="downloadWorkflow('${workflow.filename}')">Download</button>
+                        <button class="action-btn btn-secondary" onclick="downloadWorkflow('${workflow.filename}')">下载</button>
                     </div>
                 </div>
             `).join('');
